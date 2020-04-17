@@ -22,7 +22,7 @@ def check(x, y):
     if winner == "a":
         return "Player 1 wins with {} beating {}!\n".format(legend.get(x), legend.get(y))
     if winner == "b":
-        return "Computer wins with {} beating {}.\n".format(legend.get(y), legend.get(x))
+        return "Computer wins with {} beating your {}.\n".format(legend.get(y), legend.get(x))
 #initiate game
 
 print("___________________________________________")
@@ -40,15 +40,18 @@ x = 1
 while x==1 or x==2 or x==3:
     y = random.randrange(1,4)
     try: 
-        x = int(input("Pick one: \n 1: Rock,  2: Paper,  3: Scissors \n Exit: 0\n"))
-        print("PC picked: " + legend.get(y))
-        print("\n")
+        x = int(input("Choices: 1-Rock,  2-Paper,  3-Scissors  : "))
+        print("You selected: {}".format(legend.get(x)))
+        print("PC randomly picked: {}".format(legend.get(y)))
         print(check(x,y))
 
     except ValueError: 
         print("\nNot a valid input, try again: \n")
         continue
- 
+    playagain = input("Play again? Enter \"y\" or \"n\": ")
+    if playagain != "y":
+        break
 
 
-print("The End. Good game champ.")
+print("The End. Good game champ.\n")
+input("Press any key to exit. ")
