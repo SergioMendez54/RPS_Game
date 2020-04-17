@@ -4,26 +4,25 @@ import random
 # 1 = Rock, 2 = Paper, 3 = Scissors
 def check(x, y):
     winner = ""
-    if x == 1 and y == 1:
-        winner = "It's a tie." 
+    if x == y:
+        return "It's a tie.\n"
     if x == 1 and y == 2: 
-        winner = "Sorry, PC wins."
+        winner = "b"
     if x == 1 and y == 3:
-        winner = "You win!"
+        winner = "a"
     if x == 2 and y == 1:
-        winner = "You win!" 
-    if x == 2 and y == 2: 
-        winner = "It's a tie."
+        winner = "a" 
     if x == 2 and y == 3:
-        winner = "Sorry, PC wins."
+        winner = "b"
     if x == 3 and y == 1:
-        winner = "Sorry, PC wins." 
+        winner = "b" 
     if x == 3 and y == 2: 
-        winner = "You win!"
-    if x == 3 and y == 3:
-        winner = "It's a tie"
+        winner = "a"
 
-    return winner
+    if winner == "a":
+        return "Player 1 wins with {} beating {}!\n".format(legend.get(x), legend.get(y))
+    if winner == "b":
+        return "Computer wins with {} beating {}.\n".format(legend.get(y), legend.get(x))
 #initiate game
 
 print("___________________________________________")
@@ -32,15 +31,18 @@ print("|_________________________________________|")
 legend = {
     1: "Rock",
     2: "Paper",
-    3: "Scissors"
+    3: "Scissors",
+    "a": "Player 1",
+    "b": "Computer"
 }
 
 x = 1
-while x == 1 or x==2 or x==3:
+while x==1 or x==2 or x==3:
     y = random.randrange(1,4)
     try: 
         x = int(input("Pick one: \n 1: Rock,  2: Paper,  3: Scissors \n Exit: 0\n"))
         print("PC picked: " + legend.get(y))
+        print("\n")
         print(check(x,y))
 
     except ValueError: 
